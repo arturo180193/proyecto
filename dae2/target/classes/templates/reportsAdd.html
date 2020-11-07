@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Report Add</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Report Add</h3>
+
+    <div>
+        <form action="#" method="post" th:action="@{/reports/save}" th:object="${report}" >
+
+            <div class="form-group">
+                <label for="description">description</label>
+                <input type="text" class="form-control" id="description" th:field="*{description}">
+            </div>
+
+            <div class="form-group">
+                <label for="location">location</label>
+                <input type="text" class="form-control" id="location" th:field="*{location}">
+            </div>
+
+            <div class="form-group">
+                <label for="status" class="control-label">status</label>
+                <select class="form-control" id="status" th:field="*{status}">
+                    <option value="AC">Activo</option>
+                    <option value="SU">Suspendido</option>
+
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" th:field="*{idclient}" >
+                    <option th:each="client : ${clients} " th:value="${client.id}"
+                            th:text="${client.name}" th:selected="${client.id}" ></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
